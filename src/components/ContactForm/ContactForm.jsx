@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import actions from '../redux/actions';
+import { contactAdd } from '../redux/actions';
 import { getContacts } from 'components/redux/selectors';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { Label, Input, Btn } from './ContactFom.styled';
@@ -39,7 +39,7 @@ export default function ContactForm() {
       alert(`${name} is already in contact`);
     } else {
       dispatch(
-        actions.contactAdd({
+        contactAdd({
           name,
           number,
         })

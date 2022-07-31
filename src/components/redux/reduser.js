@@ -1,10 +1,10 @@
 import { nanoid } from 'nanoid';
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import actions from './actions';
+import { contactAdd, contactDelete, changeFilter } from './actions';
 
 const items = createReducer([], {
-  [actions.contactAdd]: (state, { payload: { name, number } }) => {
+  [contactAdd]: (state, { payload: { name, number } }) => {
     return [
       ...state,
       {
@@ -15,12 +15,12 @@ const items = createReducer([], {
     ];
   },
 
-  [actions.contactDelete]: (state, { payload }) =>
+  [contactDelete]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 
 const filter = createReducer('', {
-  [actions.changeFilter]: (_, { payload }) => payload,
+  [changeFilter]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
